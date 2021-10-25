@@ -5,7 +5,7 @@
 var generateBtn = document.querySelector("#generate");
 var allcaps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var lower = "abcdeghijklmopqrstuvwxyz"
-var characters= "!@#$%^&*()"
+var characters = "!@#$%^&*()"
 var numbers = "1234567890"
 
 function generatePassword() {
@@ -25,7 +25,30 @@ function generatePassword() {
     if (uppercase || lowercase || numeric || special) {
 
       // generate password 
+      var useable = ""
+      if (uppercase === true) {
+        useable = useable + allcaps
+      }
+      if (lowercase === true) {
+        useable = useable + lower
+      }
+      if (special === true) {
+        useable = useable + characters
+      }
+      if (numeric === true) {
+        useable = useable + numbers
+      }
+      console.log(useable)
+      var password = ""
+      for (var i = 0; i < passwordLength; i++) {
+        var num = Math.floor(Math.random() * useable.length)
+        var char = useable[num]
+        password = password + char
 
+      }
+
+      // display final password
+      return password;
     } else {
       window.alert("Must choose one option")
     }
